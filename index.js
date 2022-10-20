@@ -1,14 +1,10 @@
-import ReactDOM from "react-dom/client";
+import { configureStore } from "@reduxjs/toolkit";
 
-import "./index.css";
-import App from "./App";
+import uiSlice from "./ui-slice";
+import cartSlice from "./cart-slice";
 
-import { Provider } from "react-redux";
-import store from "./store/index";
+const store = configureStore({
+  reducer: { ui: uiSlice.reducer, cart: cartSlice.reducer },
+});
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
-);
+export default store;
